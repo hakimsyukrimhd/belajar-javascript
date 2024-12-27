@@ -5,7 +5,6 @@
 // Code
 
 function perkalianUnik(arr) {
-
    
     let angkaSetelahDikali = [];
     let penampungSementara = 1;
