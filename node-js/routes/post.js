@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const newsData = require("../data.json");
+const fs = require("fs");
 
 router.post("/", (req, res) => {
   const body = req.body;
@@ -7,7 +9,7 @@ router.post("/", (req, res) => {
     return Object.keys(obj).length;
   };
 
-  // console.log(lengthBody(body));
+  //   console.log(lengthBody(body));
 
   if (lengthBody(body) === 0) {
     res.status(200).json({
@@ -28,6 +30,7 @@ router.post("/", (req, res) => {
       if (err) {
         console.error(err);
       } else {
+        console.log("Seorang user menambahkan data");
         res.status(200).json({
           message: "Data berhasil ditambahkan!",
         });
