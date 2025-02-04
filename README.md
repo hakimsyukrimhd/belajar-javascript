@@ -1,5 +1,3 @@
 # belajar-javascript
 
-Repositori ini isinya adalah semua proses pembelajaran JavaScript saya.ahaahah
-
-sdfsaf
+Repositori ini isinya adalah semua proses pembelajaran JavaScript saya.
