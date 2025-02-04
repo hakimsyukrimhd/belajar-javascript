@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:title", (req, res) => {
+router.get("/title", (req, res) => {
   const newsQuery = req.query.title;
   const newsParam = req.params.category;
 
