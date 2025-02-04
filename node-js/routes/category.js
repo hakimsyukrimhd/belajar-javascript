@@ -34,4 +34,5 @@ router.get("/:title", (req, res) => {
     res.status(200).json(newsItem2);
   }
 });
+
 module.exports = router;

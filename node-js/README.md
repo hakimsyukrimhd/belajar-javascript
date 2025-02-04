@@ -3,10 +3,14 @@
 File ini dibuat dengan tujuan agar user bisa menggunakan aplikasi ini dengan cara yang benar sesuai apa yang diinginkan oleh user.
 
 1. Pertama jalankan dulu file index di terminal, setelah itu lanjut ke tutorial berikutnya
-2. Untuk mengarah ke HomePage, tuliskan `htttp:localhost:3000` di thundercloud dengan method **GET**
+2. Untuk mengarah ke HomePage, tuliskan `http:localhost:3000` di thundercloud dengan method **GET**
 3. Dari Homepage, user memiliki 5 pilihan URL :
-   a. News, ketikkan `htttp:localhost:3000/news` dan ini akan menuju ke halaman news yang akan menampilkan semua news di databese, lalu dari sini kita juga memiliki cabang selanjutnya:
-   b. About, ketikkan `htttp:localhost:3000/about` dan ini akan menuju ke halaman about
-   c. Contact, ketikkan `htttp:localhost:3000/contact` dan ini akan menuju ke halaman contact
-   d. Post, pilih method **POST** `htttp:localhost:3000/post` dan ini akan menuju ke halaman post dan disini user bisa menambahkan data sesuai format yang sudah ditentukan dalam request body(JSON)
-   e. Delete, pilih method **DELETE** `htttp:localhost:3000/delete` dan ini akan menuju ke halaman delete dan disini user bisa menghapus data yang diinginkan sesuai judul, contoh `htttp:localhost:3000/delete/Meta Bikin Aplikasi Edit Video Namanya Edits, Mau Saingi CapCut`
+   1. News, ketikkan `http:localhost:3000/news` dan ini akan menuju ke halaman news yang akan menampilkan semua news di databese, lalu dari sini kita juga memiliki cabang selanjutnya:
+      1. Category, dengan mengetik `http:localhost:3000/news/category`, akan membuka halaman category, disiini, user bisa mencari judul berita dengan dua cara:
+         a. Mencari judul menggunakan judul spesifik, dengan cara ketik `http:localhost:3000/news/category/(judul yang dicari harus lengkap)`
+         b. Mencari judul dengan mencari keyword, dengan cara ketik `http:localhost:3000/news/category/title?title=(keyword)`
+   2. About, ketikkan `http:localhost:3000/about` dan ini akan menuju ke halaman about
+   3. Contact, ketikkan `http:localhost:3000/contact` dan ini akan menuju ke halaman contact
+   4. User, ketikka `http:localhost:3000/user` dan ini akan menuju ke halaman user, disini user bisa melakukan berbagai hal seperti put, post, delete dengan cara menuju ke halaman configuration, dengan ketik `http:localhost:3000/user/config`:
+      1. Post, di link `http:localhost:3000/user/config` user bisa menambahkan data dengan cara ubah dulu ke method **POST**, lalu di requet body dituliskan data yang ingin ditambahkan, jika datanya benar (JSON), akan tampil di window keterangan bahwa data sudah di tambahkan.
+      2. Delete, di link `http:localhost:3000/user/config` user juga bisa melakukan penghapusan data dengan cara ubah dulu ke method **DELETE**, lalu di ketikkan `http:localhost:3000/user/config/(judul yang ingin dihapus secara spesifik)`, jika benar maka akan muncul keterangan data sudah di hapus di window.
