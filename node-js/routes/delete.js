@@ -1,9 +1,11 @@
 const router = require("express").Router();
+const newsData = require("../data.json");
+const fs = require("fs");
 
 router.delete("/:title", (req, res) => {
   // res adalah 200 dan data berkurang/ judul tersebut tidak ada di data
   const newsTitle = req.params.title;
-  let newsItem = dataBerita.filter((news) => {
+  let newsItem = newsData.filter((news) => {
     return news.title === newsTitle;
   });
   if (newsItem.length === 0) {
@@ -25,6 +27,7 @@ router.delete("/:title", (req, res) => {
       if (err) {
         console.error(err);
       } else {
+        console.log("Seorang user menghapus data");
         res.status(200).json({
           message: "Data berhasil dihapus!",
         });
