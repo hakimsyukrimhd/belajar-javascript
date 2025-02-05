@@ -79,10 +79,19 @@ router.put("/:title", (req, res) => {
       });
       return;
     }
-  });
-  // BELUM SELESAI
-  res.status(200).json({
-    massage: "Ini adalah put",
+    arrNews[newsIndex] = newsParamBody;
+
+    fs.writeFile("data.json", JSON.stringify(arrNews), (err) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        console.log("User melakukan update data");
+        res.status(200).json({
+          massage: "Data berhasil di update",
+        });
+      }
+    });
   });
 });
 
