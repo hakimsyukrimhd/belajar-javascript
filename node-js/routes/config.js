@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { json } = require("stream/consumers");
 const newsData = require("../data.json");
 const fs = require("fs");
 
@@ -51,7 +52,7 @@ router.post("/", (req, res) => {
 
 router.put("/:title", (req, res) => {
   const newsParam = req.params.title;
-  const newsParamBody = req.body;
+  const body = req.body;
 
   const newsItem = newsData.filter((news) => {
     return news.title === newsParam;
@@ -79,7 +80,7 @@ router.put("/:title", (req, res) => {
       });
       return;
     }
-    arrNews[newsIndex] = newsParamBody;
+    arrNews[newsIndex] = body;
 
     fs.writeFile("data.json", JSON.stringify(arrNews), (err) => {
       if (err) {
@@ -91,6 +92,50 @@ router.put("/:title", (req, res) => {
           massage: "Data berhasil di update",
         });
       }
+    });
+  });
+});
+
+router.patch("/:title", (req, res) => {
+  const newsParam = req.params.title;
+  const body = req.body;
+
+  let newsItem = newsData.filter((news) => {
+    return news.title === newsParam;
+  });
+
+  if (newsItem === 0) {
+    res.status(404).json({
+      massage: "Data yang dicari tidak ada",
+    });
+    return;
+  }
+
+  fs.readFile("data.json", "utf-8", (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+
+    const arrNews = JSON.parse(data);
+    const newsIndex = arrNews.findIndex((news) => {
+      return news.title === newsParam;
+    });
+
+    if (newsIndex === -1) {
+      res.status(404).json({
+        massage: "Data yang dikirim tidak ada",
+      });
+      return;
+    }
+
+    arrNews[newsIndex] = { ...arrNews[newsIndex], ...body };
+
+    fs.writeFile("data.json", JSON.stringify(arrNews), (err) => {
+      if (err) console.log(err);
+      console.log("Seorang user melakukan update spasifik pada suatu data");
+      res.status(200).json({
+        massage: "Update partially berhasil",
+      });
     });
   });
 });
